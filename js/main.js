@@ -5,8 +5,8 @@
 * Version: 1.5.0
 */
 
-(function($) {
-"use strict";
+(function ($) {
+    "use strict";
 
     // Hide Mobile menu
     function mobileMenuHide() {
@@ -16,7 +16,7 @@
         if (windowWidth < 1025) {
             siteHeader.addClass('mobile-menu-hide');
             $('.menu-toggle').removeClass('open');
-            setTimeout(function(){
+            setTimeout(function () {
                 siteHeader.addClass('animate');
             }, 500);
         } else {
@@ -29,11 +29,11 @@
     function customScroll() {
         var windowWidth = $(window).width();
         if (windowWidth > 1024) {
-            $('.animated-section, .single-page-content').each(function() {
+            $('.animated-section, .single-page-content').each(function () {
                 $(this).perfectScrollbar();
             });
         } else {
-            $('.animated-section, .single-page-content').each(function() {
+            $('.animated-section, .single-page-content').each(function () {
                 $(this).perfectScrollbar('destroy');
             });
         }
@@ -42,9 +42,9 @@
 
     //On Window load & Resize
     $(window)
-        .on('load', function() { //Load
+        .on('load', function () { //Load
             // Animation on Page Loading
-            $(".preloader").fadeOut( 800, "linear" );
+            $(".preloader").fadeOut(800, "linear");
 
             // initializing page transition.
             var ptPage = $('.animated-sections');
@@ -54,9 +54,9 @@
                 });
             }
         })
-        .on('resize', function() { //Resize
-             mobileMenuHide();
-             $('.animated-section').each(function() {
+        .on('resize', function () { //Resize
+            mobileMenuHide();
+            $('.animated-section').each(function () {
                 $(this).perfectScrollbar('update');
             });
             customScroll();
@@ -68,7 +68,7 @@
         var movementStrength = 23;
         var height = movementStrength / $(document).height();
         var width = movementStrength / $(document).width();
-        $("body").on('mousemove', function(e){
+        $("body").on('mousemove', function (e) {
             var pageX = e.pageX - ($(document).width() / 2),
                 pageY = e.pageY - ($(document).height() / 2),
                 newvalueX = width * pageX * -1,
@@ -80,7 +80,7 @@
                 "background-position": "calc( 50% + " + newvalueX + "px ) calc( 50% + " + newvalueY + "px )",
             });
 
-            setTimeout(function() {
+            setTimeout(function () {
                 elements.removeClass('transition');
             }, 300);
         })
@@ -117,62 +117,5 @@
             animateOut: 'animated-section-scaleDown',
             animateIn: 'animated-section-scaleUp'
         });
-
-        // Lightbox init
-        $('body').magnificPopup({
-            delegate: 'a.lightbox',
-            type: 'image',
-            removalDelay: 300,
-
-            // Class that is added to popup wrapper and background
-            // make it unique to apply your CSS animations just to this exact popup
-            mainClass: 'mfp-fade',
-            image: {
-                // options for image content type
-                titleSrc: 'title',
-                gallery: {
-                    enabled: true
-                },
-            },
-
-            iframe: {
-                markup: '<div class="mfp-iframe-scaler">'+
-                        '<div class="mfp-close"></div>'+
-                        '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-                        '<div class="mfp-title mfp-bottom-iframe-title"></div>'+
-                      '</div>', // HTML markup of popup, `mfp-close` will be replaced by the close button
-
-                patterns: {
-                    youtube: {
-                      index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
-
-                      id: null, // String that splits URL in a two parts, second part should be %id%
-                      // Or null - full URL will be returned
-                      // Or a function that should return %id%, for example:
-                      // id: function(url) { return 'parsed id'; }
-
-                      src: '%id%?autoplay=1' // URL that will be set as a source for iframe.
-                    },
-                    vimeo: {
-                      index: 'vimeo.com/',
-                      id: '/',
-                      src: '//player.vimeo.com/video/%id%?autoplay=1'
-                    },
-                    gmaps: {
-                      index: '//maps.google.',
-                      src: '%id%&output=embed'
-                    }
-                },
-
-                srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
-            },
-
-            callbacks: {
-                markupParse: function(template, values, item) {
-                 values.title = item.el.attr('title');
-                }
-            },
-        });
     });
-
 })(jQuery);
