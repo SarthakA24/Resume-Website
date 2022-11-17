@@ -288,8 +288,8 @@ input[type="submit"]:focus {
     overflow: auto;
   }
 
-  .header-titles {
-
+  .header-titles h2 {
+    font-size: 25px !important;
   }
 
   /* --- Navigation --- */
@@ -397,7 +397,7 @@ input[type="submit"]:focus {
 
 .header-photo {
   position: relative;
-  width: 180px;
+  width: 150px;
   margin: 0 auto 30px;
   z-index: 1;
 }
@@ -445,7 +445,7 @@ input[type="submit"]:focus {
 
 /* --- Social Links --- */
 .social-links {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .social-links ul {
@@ -2347,7 +2347,7 @@ blockquote {
 
   .header-photo {
     max-width: 130px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
 
   .mobile-menu-hide {
